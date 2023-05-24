@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// https://github.com/cypress-io/cypress/issues/3887
+// Workaround for leading and trailing whitespaces and newlines in angular2 version. This would make have.text trim them.
+function overwriteShould(originalFn, subject, chainer, method, value) {
+    if (chainer === 'have.text') {
+      return originalFn(subject.prop('innerText').trim(), 'equal', method, value)
+        .then(() => subject);
+    }
+    const args = Cypress._.reject(arguments, { name: 'originalFn' });
+    return originalFn(...args);
+  }
+
+Cypress.Commands.overwrite('should', overwriteShould);
+
+Cypress.Commands.overwrite('and', overwriteShould);
