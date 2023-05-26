@@ -8,7 +8,8 @@ Feature: Clear completed tasks
     And The last task name is "3rd"
     When I mark "1st" task as completed
     And I click Clear Completed button
-    Then I dont see "1st" task
+    Then I see 2 number of tasks
+    And I dont see "1st" task
     And I dont see Clear Completed button
 
   Scenario: Clear 3 completed task
@@ -24,7 +25,8 @@ Feature: Clear completed tasks
     And I mark "3rd" task as completed
     And I mark "5th" task as completed
     And I click Clear Completed button
-    Then I dont see "1st" task
+    Then I see 2 number of tasks
+    And I dont see "1st" task
     And I dont see "3rd" task
     And I dont see "5th" task
     And I dont see Clear Completed button

@@ -8,3 +8,4 @@ Feature: Remove task
     And The last task name is "3rd"
     When I remove "1st" task
     Then I dont see "1st" task
+    And I see 2 number of tasks
