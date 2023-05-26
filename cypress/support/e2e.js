@@ -20,3 +20,4 @@ import './commands'
 // require('./commands')
 
 import "cypress-real-events";
+import '@shelex/cypress-allure-plugin';
